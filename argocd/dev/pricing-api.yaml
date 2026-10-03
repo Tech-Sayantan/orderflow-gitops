@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pricing-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Tech-Sayantan/orderflow-gitops.git
+    targetRevision: main
+    path: charts/pricing-api
+    helm:
+      releaseName: pricing-api
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: orderflow
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
