@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: 923988301700.dkr.ecr.us-east-1.amazonaws.com/orderflow/pricing-api
+  digest: sha256:ddcd808ee356ef016f66008e1902f5fcd50efd14460f7de8ebf1ca27e45d44d8
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8081
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
