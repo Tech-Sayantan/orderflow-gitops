@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: 923988301700.dkr.ecr.us-east-1.amazonaws.com/orderflow/orders-api
+  digest: sha256:76f27568773f61e5bee8d71a60bf5a97e1926e12678dbc96891876c54f2eae82
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8080
+
+database:
+  host: postgres
+  port: 5432
+  name: orderflow
+  secretName: orderflow-db
+
+pricingUrl: http://pricing-api:8081
+receiptStore: local
+receiptDir: /app/receipts
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 384Mi
+  limits:
+    cpu: 1000m
+    memory: 768Mi
